@@ -298,13 +298,13 @@ const CarouselCard = ({
   
   // Circular 3D Carousel Effect + Entry Animation
   const rotateY = useMotionValue(0);
-  const rotateX = useMotionValue(0);
-  const z = useMotionValue(0);
+  const rotateX = useMotionValue(180); // Initial entry state
+  const z = useMotionValue(400); // Initial entry state
   const x = useMotionValue(0);
   const scale = useMotionValue(0.3);
   const opacity = useMotionValue(0);
-  const zIndex = useMotionValue(0);
-  const blur = useMotionValue("blur(20px)");
+  const zIndex = useMotionValue(100 - index); // Initial entry state
+  const blur = useMotionValue(typeof window !== 'undefined' && window.innerWidth < 768 ? "blur(0px)" : "blur(20px)");
 
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
 
@@ -337,7 +337,8 @@ const CarouselCard = ({
 
     // opacity
     const targetOpacity = Math.min(1, Math.max(0, 0.3 + (cos + 1) * 0.35));
-    opacity.set(targetOpacity * e);
+    // Clamp opacity to prevent invalid CSS values during spring overshoot/undershoot
+    opacity.set(Math.max(0, Math.min(1, targetOpacity * e)));
 
     // zIndex
     const targetZIndex = Math.round(cos * 100);
@@ -539,10 +540,18 @@ export const Portfolio = () => {
   const [isPointerDown, setIsPointerDown] = useState(false);
 
   const sectionRef = useRef<HTMLElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  
   const isSectionInView = useInView(sectionRef, {
     once: true,
     margin: "0px"
   });
+  
+  const isCarouselInView = useInView(carouselRef, {
+    once: true,
+    margin: "-100px 0px" // Trigger when the carousel is slightly visible
+  });
+
   const isCanvasInView = useInView(sectionRef, { margin: "200px 0px" });
 
   const mouseX = useSpring(0, { stiffness: 500, damping: 28 });
@@ -730,7 +739,7 @@ export const Portfolio = () => {
       </div>
 
       {/* 3D Carousel */}
-      <div className="pb-24 pt-8 md:pb-32 md:pt-16 w-full relative z-10 overflow-hidden" onWheel={handleWheel}>
+      <div ref={carouselRef} className="pb-24 pt-8 md:pb-32 md:pt-16 w-full relative z-10 overflow-hidden" onWheel={handleWheel}>
         <motion.div 
           onPointerDown={() => setIsPointerDown(true)}
           onPointerUp={() => setIsPointerDown(false)}
@@ -760,7 +769,7 @@ export const Portfolio = () => {
               isDragging={isDragging}
               isPointerDown={isPointerDown}
               totalCards={projects.length}
-              isSectionInView={isSectionInView}
+              isSectionInView={isCarouselInView}
             />
           ))}
         </motion.div>

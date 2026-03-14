@@ -6,19 +6,19 @@ import { OptimizedImage } from './OptimizedImage';
 const metrics = [
   {
     value: "+150%",
-    label: "CROISSANCE DES\nLEADS",
+    label: "DE DEMANDES\nDE DEVIS",
   },
   {
     value: "< 1s",
-    label: "VITESSE D'AFFICHAGE",
+    label: "TEMPS DE\nCHARGEMENT",
   },
   {
-    value: "100%",
-    label: "TAUX DE\nSATISFACTION",
+    value: "1ère",
+    label: "PAGE SUR\nGOOGLE",
   },
   {
     value: "7j",
-    label: "TIME-TO-MARKET",
+    label: "POUR LE\nLANCEMENT",
   }
 ];
 
@@ -162,12 +162,12 @@ export const Testimonials = () => {
       <section id="impact" className="py-24 md:py-32 bg-anthracite overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <span className="text-sand font-mono font-bold tracking-[0.3em] uppercase text-xs mb-6 block">04 / L'empreinte</span>
+            <span className="text-sand font-mono font-bold tracking-[0.3em] uppercase text-xs mb-6 block">04 / LE R.O.I</span>
             <h2 className="text-5xl md:text-7xl font-black font-display text-white leading-[1.1] tracking-tighter mb-6">
-              L'esthétique au service de la <br className="hidden md:block" /><span className="text-sand italic font-serif font-light tracking-normal lowercase">performance.</span>
+              Votre site doit vous rapporter <br className="hidden md:block" />plus qu'il ne vous <span className="text-sand italic font-serif font-light tracking-normal lowercase">coûte.</span>
             </h2>
             <p className="text-lg md:text-xl text-white/60 max-w-2xl mx-auto">
-              Chaque pixel est pensé pour convertir. Mes clients n'achètent pas un simple site, ils investissent dans leur atout digital le plus rentable.
+              Fini les sites vitrines invisibles. Je conçois des machines à conversion ultra-rapides, pensées pour dominer votre marché local et générer des appels tous les jours.
             </p>
           </div>
 
@@ -183,7 +183,7 @@ export const Testimonials = () => {
       </section>
 
       {/* SECTION 2: Testimonials Carousel */}
-      <section id="testimonials" className="py-24 md:py-32 bg-cream overflow-hidden">
+      <section id="testimonials" className="py-24 md:py-32 bg-paper overflow-hidden">
         <div className="container mx-auto px-6 mb-20">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-4xl md:text-5xl font-black font-display text-anthracite leading-[1.1] tracking-tighter">
@@ -194,8 +194,8 @@ export const Testimonials = () => {
 
         {/* Desktop View - Marquee */}
         <div className="hidden md:flex relative w-full">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-cream to-transparent z-10 pointer-events-none"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-cream to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-paper to-transparent z-10 pointer-events-none"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-paper to-transparent z-10 pointer-events-none"></div>
           
           <div className="flex animate-scroll pause-on-hover">
             {[...testimonials, ...testimonials].map((testimonial, index) => (

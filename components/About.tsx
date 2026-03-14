@@ -85,12 +85,11 @@ export const About = () => {
   };
   
   const lineVariants = {
-    hidden: { y: "120%", opacity: 0, rotate: 2 },
+    hidden: { y: "100%", opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1, 
-      rotate: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } 
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } 
     }
   };
 
@@ -116,21 +115,20 @@ export const About = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="md:col-span-5 relative h-[320px] sm:h-[400px] md:h-[650px] rounded-[2rem] overflow-hidden shadow-2xl group z-10"
+            className="md:col-span-5 relative h-[320px] sm:h-[400px] md:h-[650px] rounded-[2rem] overflow-hidden shadow-2xl group z-10 bg-gradient-to-b from-gray-100 to-gray-300"
           >
             <motion.div style={{ y: imageY, height: '120%' }} className="absolute inset-0 -top-[10%]">
-              {/* PLACEHOLDER FOR PHOTO: Replace src with your actual professional photo */}
               <OptimizedImage 
-                src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=2070&auto=format&fit=crop&fm=webp" 
+                src="/profile.png" 
                 alt="Clément Franjou - Expert Webflow" 
                 width={800}
                 height={650}
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-top"
               />
             </motion.div>
             
             {/* Overlay for contrast */}
-            <div className="absolute inset-0 bg-gradient-to-t from-anthracite/80 via-anthracite/20 to-transparent opacity-80 md:opacity-60" />
+            <div className="absolute inset-0 bg-gradient-to-t from-anthracite/60 via-transparent to-transparent opacity-80 md:opacity-60" />
 
             {/* Floating Identity Badge (Trust Element) */}
             <motion.div 

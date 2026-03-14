@@ -140,15 +140,15 @@ export const Hero = () => {
           {/* Premium Trust Badge - Aesthetic Redesign */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-3 mb-5 md:mb-8 px-3.5 py-1.5 md:px-5 md:py-2 rounded-full bg-white/80 border border-white/60 shadow-[0_8px_30px_-4px_rgba(0,0,0,0.04)]"
+            className="inline-flex items-center gap-2 md:gap-3 mb-4 md:mb-8 px-3 py-1 md:px-5 md:py-2 rounded-full bg-white/80 border border-white/60 shadow-[0_8px_30px_-4px_rgba(0,0,0,0.04)]"
           >
             <div className="flex items-center gap-0.5">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="w-3 h-3 md:w-3.5 md:h-3.5 text-[#E5B05C] fill-[#E5B05C]" />
+                <Star key={i} className="w-2.5 h-2.5 md:w-3.5 md:h-3.5 text-[#E5B05C] fill-[#E5B05C]" />
               ))}
             </div>
             <div className="w-[1px] h-3 md:h-4 bg-anthracite/15"></div>
-            <span className="text-[11px] md:text-[13px] font-medium text-anthracite/80 tracking-wide">
+            <span className="text-[10px] md:text-[13px] font-medium text-anthracite/80 tracking-wide">
               100% Clients Satisfaits
             </span>
           </motion.div>
@@ -157,21 +157,29 @@ export const Hero = () => {
           <div className="relative w-full max-w-[100vw] overflow-visible">
             {/* Doodles & Stickers - Hidden on mobile for clarity */}
             <motion.div 
+              drag
+              dragMomentum={false}
+              dragConstraints={{ left: -300, right: 300, top: -200, bottom: 200 }}
+              whileDrag={{ scale: 1.1, cursor: "grabbing", zIndex: 50 }}
               initial={{ opacity: 0, rotate: -20, scale: 0 }}
               animate={{ opacity: 1, rotate: -10, scale: 1 }}
               transition={{ delay: 0.8, type: "spring" }}
-              className="hidden md:block absolute -top-12 -left-24 bg-amber-400 text-anthracite font-bold py-2 px-4 rounded-2xl shadow-xl border-2 border-anthracite z-20 transform -rotate-12"
+              className="hidden md:block absolute -top-12 -left-24 bg-amber-400 text-anthracite font-bold py-2 px-4 rounded-2xl shadow-xl border-2 border-anthracite z-20 cursor-grab"
             >
-              <span className="flex items-center gap-2 text-base"><Sparkles className="w-4 h-4" /> Sur-mesure</span>
+              <span className="flex items-center gap-2 text-base pointer-events-none"><Sparkles className="w-4 h-4" /> Sur-mesure</span>
             </motion.div>
 
             <motion.div 
+              drag
+              dragMomentum={false}
+              dragConstraints={{ left: -300, right: 300, top: -200, bottom: 200 }}
+              whileDrag={{ scale: 1.1, cursor: "grabbing", zIndex: 50 }}
               initial={{ opacity: 0, rotate: 20, scale: 0 }}
               animate={{ opacity: 1, rotate: 15, scale: 1 }}
               transition={{ delay: 1, type: "spring" }}
-              className="hidden md:block absolute top-10 -right-16 bg-white text-anthracite font-bold py-2 px-4 rounded-full shadow-xl border-2 border-anthracite z-20 transform rotate-12"
+              className="hidden md:block absolute top-10 -right-16 bg-white text-anthracite font-bold py-2 px-4 rounded-full shadow-xl border-2 border-anthracite z-20 cursor-grab"
             >
-              <span className="flex items-center gap-2 text-base"><Star className="w-4 h-4 text-sand" /> Local</span>
+              <span className="flex items-center gap-2 text-base pointer-events-none"><Star className="w-4 h-4 text-sand" /> Local</span>
             </motion.div>
 
             <h1 className="text-[10vw] sm:text-[9vw] md:text-7xl lg:text-[5rem] xl:text-[5.25rem] font-bold font-serif text-anthracite/90 leading-[1.05] md:leading-[1.05] mb-6 md:mb-8 tracking-tight text-balance relative z-10 flex flex-col items-center w-full">
@@ -244,28 +252,30 @@ export const Hero = () => {
             {/* Mobile Secondary Button (Integrated Avatar Pill) */}
             <a 
               href="#portfolio" 
-              className="md:hidden group flex items-center gap-3 bg-white/90 border border-anthracite/10 p-1 pr-4 rounded-full shadow-sm hover:bg-white hover:shadow-md transition-all active:scale-95 mt-2"
+              className="md:hidden group flex items-center gap-3 bg-white/90 border border-anthracite/10 p-1.5 pr-5 rounded-full shadow-sm hover:bg-white hover:shadow-md transition-all active:scale-95 mt-3"
             >
               <div className="relative">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=100&auto=format&fit=crop&fm=webp" 
-                  alt="Clément" 
-                  width={28}
-                  height={28}
-                  className="w-7 h-7 rounded-full object-cover border border-white"
-                  referrerPolicy="no-referrer"
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="sync"
-                />
-                <div className="absolute -bottom-0.5 -right-0.5 bg-white rounded-full p-[1.5px] shadow-sm">
-                  <span className="flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
+                <div className="w-9 h-9 rounded-full overflow-hidden bg-gradient-to-b from-sand/40 to-anthracite/5 border border-white shadow-sm flex items-end justify-center">
+                  <img 
+                    src="/profile.png" 
+                    alt="Clément" 
+                    width={36}
+                    height={36}
+                    className="w-full h-[115%] object-cover object-top"
+                    referrerPolicy="no-referrer"
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="sync"
+                  />
+                </div>
+                <div className="absolute -bottom-0.5 -right-0.5 bg-white rounded-full p-[2px] shadow-sm">
+                  <span className="flex h-2 w-2 rounded-full bg-emerald-500"></span>
                 </div>
               </div>
-              <span className="text-[12px] font-semibold text-anthracite/80 group-hover:text-anthracite transition-colors">
+              <span className="text-[13px] font-semibold text-anthracite/80 group-hover:text-anthracite transition-colors">
                 Voir mes réalisations
               </span>
-              <ArrowDown className="w-3.5 h-3.5 text-anthracite/40 group-hover:translate-y-1 group-hover:text-anthracite transition-all" />
+              <ArrowDown className="w-4 h-4 text-anthracite/40 group-hover:translate-y-1 group-hover:text-anthracite transition-all" />
             </a>
           </motion.div>
 
